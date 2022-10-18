@@ -4,6 +4,8 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
 
 import ch.makery.address.model.Monster;
 import ch.makery.address.view.DashboardOverviewController;
@@ -26,10 +28,13 @@ public class MainApp extends Application {
     
     private ObservableList<Monster> monsterData = FXCollections.observableArrayList();
     
-    public MainApp() {
+    public MainApp() throws IOException {
     	try {
-			monsterData.add(new Monster("Slime", 1, "Water", new Image(new FileInputStream("C:\\Users\\fishi\\CS\\Personal_Projects\\Monster_Simulator\\src\\ch\\makery\\address\\view\\slimeMonster.png")), 5));
-			monsterData.add(new Monster("Wolf", 5, "Dark", new Image(new FileInputStream("C:\\Users\\fishi\\CS\\Personal_Projects\\Monster_Simulator\\src\\ch\\makery\\address\\view\\wolfMonster.png")), 10 ));
+    		String slimeDir = new java.io.File( "slimeMonster.png" ).getCanonicalPath();
+    		String wolfDir = new java.io.File( "wolfMonster.png" ).getCanonicalPath();
+    		
+    		monsterData.add(new Monster("Slime", 1, "Water", new Image(new FileInputStream(slimeDir.replace("\\","\\\\"))), 5));
+			monsterData.add(new Monster("Wolf", 5, "Earth", new Image(new FileInputStream(wolfDir.replace("\\","\\\\"))), 10 ));
 			
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block

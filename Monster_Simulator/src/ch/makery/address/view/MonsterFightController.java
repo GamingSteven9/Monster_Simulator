@@ -31,6 +31,9 @@ public class MonsterFightController {
 	private Label userHealthLabel;
 	
 	@FXML
+	private Label userMpLabel;
+	
+	@FXML
 	private TextArea battleTextArea;
 	
 	private Monster monster;
@@ -40,6 +43,8 @@ public class MonsterFightController {
 	
 	private int userHealth = 20;
 	private int tempHealth;
+	
+	private int userMP = 10;
 	
 	Random r = new Random();
 	
@@ -64,21 +69,40 @@ public class MonsterFightController {
     	monsterHealthLabel.setText(Integer.toString(monster.getHealth()));
     	userHealthLabel.setText(Integer.toString(userHealth));
     	tempHealth = monster.getHealth();
+    	userMpLabel.setText(Integer.toString(userMP));
     }
     
     // The function for fighting the monster
     @FXML
     private void fightMonster(ActionEvent event) throws IOException {
     	
+    	if (userHealth <= 0) {
+    		
+    		battleTextArea.clear();
+    		battleTextArea.appendText("You Lose!\n");
+    		
+    		
+    		
+    	} else if (tempHealth <= 0) {
+    		
+    		battleTextArea.clear();
+    		battleTextArea.appendText("You Win!\n"); 
+    		
+
+    	}
+    	
     	if (tempHealth > 0 && userHealth > 0) {
     		
         		//Determines if the user missed thier attacks
     			userDamage = r.nextInt(11);
-        		battleTextArea.clear();
+        		//battleTextArea.clear();
         		
         		if (userDamage == 0) {
         			
         			//User missed
+        			
+        			battleTextArea.clear();
+        			
         			battleTextArea.appendText("You missed!\n");
         			
         		} else {
@@ -87,11 +111,20 @@ public class MonsterFightController {
         			criticalDamage = r.nextInt(26);
         			if (criticalDamage == 0) {
         				
+        				battleTextArea.clear();
+        				
         				tempHealth = tempHealth - 3;
         				battleTextArea.appendText("You got a critical hit!\n");
+        				
+        				if (tempHealth < 0) {
+        					tempHealth = 0;
+        				}
+        				
         				monsterHealthLabel.setText(Integer.toString(tempHealth));
         				
         			} else {
+        				
+        				battleTextArea.clear();
         			
         				tempHealth--;
         				battleTextArea.appendText("You hit the monster!\n");
@@ -110,6 +143,11 @@ public class MonsterFightController {
             			
             			userHealth = userHealth - 3;
                 		battleTextArea.appendText("The monster got a critical hit\n");
+                		
+                		if (userHealth < 0) {
+        					userHealth = 0;
+        				}
+                		
                 		userHealthLabel.setText(Integer.toString(userHealth));
             			
             		} else {
@@ -127,9 +165,32 @@ public class MonsterFightController {
             		battleTextArea.appendText("The monster missed!\n");
             		
             	}
+            	
             	//System.out.println(takeDamage);
+            	
+            	if (userHealth <= 0) {
+            		
+            		
+            		battleTextArea.appendText("You Lose!\n");
+            		
+            		
+            		
+            	} else if (tempHealth <= 0) {
+            		
+            		
+            		battleTextArea.appendText("You Win!\n"); 
+            		
+
+            	}
         	}
-    		
+    	
+    	//battleTextArea.clear();
+    	
+    	//System.out.println(tempHealth);
+    }
+    
+    @FXML
+    public void useMagic(ActionEvent event) throws IOException {
     	
     	if (userHealth <= 0) {
     		
@@ -137,18 +198,90 @@ public class MonsterFightController {
     		battleTextArea.appendText("You Lose!\n");
     		
     		
+    		
     	} else if (tempHealth <= 0) {
     		
     		battleTextArea.clear();
     		battleTextArea.appendText("You Win!\n"); 
+    		
 
     	}
     	
+    	if (tempHealth > 0 && userHealth > 0) {
+    		
+    		if (userMP > 0) {
+    			
+    			battleTextArea.clear();
+    			userMP = userMP - 5;
+    			tempHealth = tempHealth - 3;
+				if (tempHealth < 0) {
+					tempHealth = 0;
+				}
+    			battleTextArea.appendText("You used a magical attack!\n");
+    			userMpLabel.setText(Integer.toString(userMP));
+    			monsterHealthLabel.setText(Integer.toString(tempHealth));
+    			
+    			// Determines if the user takes damage
+        		MonsterDamage = r.nextInt(3);
+        		
+            	if (MonsterDamage == 0) {
+            		
+            		criticalDamage = r.nextInt(26);
+            		
+            		if (criticalDamage == 0) {
+            			
+            			userHealth = userHealth - 3;
+                		battleTextArea.appendText("The monster got a critical hit\n");
+                		
+                		if (userHealth < 0) {
+        					userHealth = 0;
+        				}
+                		
+                		userHealthLabel.setText(Integer.toString(userHealth));
+            			
+            		} else {
+            		
+            		// The monster hits the user
+            		userHealth--;
+            		battleTextArea.appendText("You took damage\n");
+            		userHealthLabel.setText(Integer.toString(userHealth));
+            		
+            		}
+            		
+            	} else {
+            		
+            		// The monster misses
+            		battleTextArea.appendText("The monster missed!\n");
+            		
+            	}
+    			
+    		} else {
+    			battleTextArea.clear();
+    			battleTextArea.appendText("You're out of MP!\n");
+    		}
+    		
+        	
+        	
+        	
+        	//System.out.println(takeDamage);
+        	
+        	if (userHealth <= 0) {
+        		
+        		
+        		battleTextArea.appendText("You Lose!\n");
+        		
+        		
+        		
+        	} else if (tempHealth <= 0) {
+        		
+        		
+        		battleTextArea.appendText("You Win!\n"); 
+        		
+
+        	}
+    	}
     	
-    	
-    	//System.out.println(tempHealth);
     }
-    
     
     
     

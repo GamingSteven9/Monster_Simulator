@@ -12,7 +12,13 @@
       <Label fx:id="monsterNameLabel" layoutX="233.0" layoutY="25.0" text="Label" />
       <Button layoutX="223.0" layoutY="419.0" mnemonicParsing="false" onAction="#fightMonster" text="Fight" />
       <Label fx:id="monsterHealthLabel" layoutX="233.0" layoutY="87.0" text="Label" />
-      <Label fx:id="userHealthLabel" layoutX="233.0" layoutY="465.0" text="Label" />
+      <Label fx:id="userHealthLabel" layoutX="260.0" layoutY="465.0" text="Label" />
       <TextArea fx:id="battleTextArea" layoutX="316.0" layoutY="340.0" prefHeight="125.0" prefWidth="170.0" />
+      <Label fx:id="userMpLabel" layoutX="82.0" layoutY="465.0" text="Label" />
+      <Label layoutX="141.0" layoutY="87.0" text="Monster HP:" wrapText="true" />
+      <Label layoutX="14.0" layoutY="465.0" text="User MP:" />
+      <Label layoutX="157.0" layoutY="465.0" prefHeight="21.0" prefWidth="82.0" text="User Health:" />
+      <Label layoutX="101.0" layoutY="25.0" text="Monster Name:" />
+      <Button layoutX="69.0" layoutY="419.0" mnemonicParsing="false" onAction="#useMagic" text="Magic" />
    </children>
 </AnchorPane>
