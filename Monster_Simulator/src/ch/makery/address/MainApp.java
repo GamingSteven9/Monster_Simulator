@@ -30,6 +30,7 @@ public class MainApp extends Application {
     
     public MainApp() throws IOException {
     	try {
+		// Add monster data
     		String slimeDir = new java.io.File( "slimeMonster.png" ).getCanonicalPath();
     		String wolfDir = new java.io.File( "wolfMonster.png" ).getCanonicalPath();
     		
@@ -46,6 +47,10 @@ public class MainApp extends Application {
     public ObservableList<Monster> getMonsterData() {
 		return monsterData;
 	}
+
+	/**
+     * Initializes the primary stage
+     */
 
 
     @Override
