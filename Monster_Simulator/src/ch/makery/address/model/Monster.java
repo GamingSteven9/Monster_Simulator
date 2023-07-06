@@ -10,6 +10,10 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.scene.image.Image;
 
+	/**
+     * Initializes the Monster Class.
+     */
+
 public class Monster {
 	
 	private final StringProperty name;
@@ -30,6 +34,10 @@ public class Monster {
 		this.image = new SimpleObjectProperty<Object>(image);
 		this.health = new SimpleIntegerProperty(health);
 	}
+
+	/**
+     * Gets and sets the monster's name
+     */
 	
 	public String getName() {
 		return name.get();
@@ -42,6 +50,10 @@ public class Monster {
 	public StringProperty nameProperty() {
 		return name;
 	}
+
+	/**
+     * Gets and sets the monster's level
+     */
 	
 	public int getLevel() {
 		return level.get();
@@ -54,6 +66,10 @@ public class Monster {
 	public IntegerProperty levelProperty() {
 		return level;
 	}
+
+	/**
+     * Gets and sets the monster's element
+     */
 	
 	public String getElement() {
 		return element.get();
@@ -66,6 +82,10 @@ public class Monster {
 	public StringProperty elementProperty() {
 		return element;
 	}
+
+	/**
+     * Gets and sets the monster's picture
+     */
 	
 	public Object getImage() {
 		return image.get();
@@ -78,6 +98,10 @@ public class Monster {
 	public ObjectProperty<Object> imageProperty() {
 		return image;
 	}
+
+	/**
+     * Gets and sets the monster's health
+     */
 	
 	public int getHealth() {
 		return health.get();
