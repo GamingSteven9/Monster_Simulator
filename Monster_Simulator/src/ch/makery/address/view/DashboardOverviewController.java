@@ -24,16 +24,16 @@ public class DashboardOverviewController {
     private TableColumn<Monster, Integer> levelColumn; //The column that displays the level of the monsters
 
     @FXML
-    private Label nameLabel;
+    private Label nameLabel; //Label for name
     @FXML
-    private Label levelLabel;
+    private Label levelLabel; //Label for level
     @FXML
-    private Label elementLabel;
+    private Label elementLabel; //Label for element
     @FXML
-    private Label healthLabel;
+    private Label healthLabel; //Label for health
     
     @FXML
-    private ImageView monsterPicture;
+    private ImageView monsterPicture; //Where the monster's picture will be
     
     // Reference to the main application.
     private MainApp mainApp;
@@ -90,6 +90,10 @@ public class DashboardOverviewController {
             monsterPicture.setImage(null);
         }
     }
+
+    /**
+     * Handles the fight against the monster
+     */
     
     @FXML
     private void handleMonsterFight(ActionEvent event) throws IOException {
