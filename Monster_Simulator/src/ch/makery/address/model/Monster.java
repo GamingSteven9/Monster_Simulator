@@ -11,7 +11,7 @@ import javafx.beans.property.StringProperty;
 import javafx.scene.image.Image;
 
 	/**
-     * Initializes the Monster Class.
+     * Superclass for monsters
      */
 
 public class Monster {
