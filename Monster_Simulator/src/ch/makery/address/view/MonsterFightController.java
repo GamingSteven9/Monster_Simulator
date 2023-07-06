@@ -19,39 +19,39 @@ import ch.makery.address.model.Monster;
 public class MonsterFightController {
 	
 	@FXML
-	private Label monsterNameLabel;
+	private Label monsterNameLabel; // Label for monster name
 	
 	@FXML
-	private Label monsterHealthLabel;
+	private Label monsterHealthLabel; // Label for monster health
 	
 	@FXML
-    private ImageView monsterImage;
+    	private ImageView monsterImage; // Imageview for monster image
 	
 	@FXML
-	private Label userHealthLabel;
+	private Label userHealthLabel; // Label for user health
 	
 	@FXML
-	private Label userMpLabel;
+	private Label userMpLabel; // Label for user's mp
 	
 	@FXML
-	private TextArea battleTextArea;
+	private TextArea battleTextArea; // Test Area used to describe what happens in the battle
 	
-	private Monster monster;
-	private boolean okClicked = false;
+	private Monster monster; //Initailizes monster class
+	private boolean okClicked = false; // Determine is object has been clicked
 
-	private MainApp mainApp;
+	private MainApp mainApp; //Initailizes main app
 	
-	private int userHealth = 20;
-	private int tempHealth;
+	private int userHealth = 20; // User's health
+	private int tempHealth; // Used for chsnges in health
 	
-	private int userMP = 10;
+	private int userMP = 10; // User's MP
 	
-	Random r = new Random();
+	Random r = new Random(); // Used for random number generation
 	
-	private int userDamage;
-	private int MonsterDamage;
+	private int userDamage; //Integers used for determining if user takes damage
+	private int MonsterDamage; //Integers used for determining if monster takes damage
 	
-	private int criticalDamage;
+	private int criticalDamage; //Integers used for determining critcal hits
 	
 	/**
      * Initializes the controller class. This method is automatically called
@@ -90,6 +90,8 @@ public class MonsterFightController {
     		
 
     	}
+
+	    // If the user's and monster's health is above 0
     	
     	if (tempHealth > 0 && userHealth > 0) {
     		
@@ -125,7 +127,7 @@ public class MonsterFightController {
         			} else {
         				
         				battleTextArea.clear();
-        			
+        				// User hit the monster
         				tempHealth--;
         				battleTextArea.appendText("You hit the monster!\n");
         				monsterHealthLabel.setText(Integer.toString(tempHealth));
@@ -166,14 +168,14 @@ public class MonsterFightController {
             		
             	}
             	
-            	//System.out.println(takeDamage);
+            	//If the user loses
             	
             	if (userHealth <= 0) {
             		
             		
             		battleTextArea.appendText("You Lose!\n");
             		
-            		
+            		//If the user wins
             		
             	} else if (tempHealth <= 0) {
             		
@@ -188,16 +190,20 @@ public class MonsterFightController {
     	
     	//System.out.println(tempHealth);
     }
+
+	// Handles the event when the user uses magic
     
     @FXML
     public void useMagic(ActionEvent event) throws IOException {
+
+	    //If the user loses
     	
     	if (userHealth <= 0) {
     		
     		battleTextArea.clear();
     		battleTextArea.appendText("You Lose!\n");
     		
-    		
+    		//If the user wins
     		
     	} else if (tempHealth <= 0) {
     		
@@ -206,8 +212,12 @@ public class MonsterFightController {
     		
 
     	}
+
+	    // If the user's and monster's health is above 0
     	
     	if (tempHealth > 0 && userHealth > 0) {
+
+		// If the user's mp is greeater than 0
     		
     		if (userMP > 0) {
     			
@@ -256,6 +266,7 @@ public class MonsterFightController {
             	}
     			
     		} else {
+			// Out of MP
     			battleTextArea.clear();
     			battleTextArea.appendText("You're out of MP!\n");
     		}
@@ -263,14 +274,14 @@ public class MonsterFightController {
         	
         	
         	
-        	//System.out.println(takeDamage);
+        	//If the user loses
         	
         	if (userHealth <= 0) {
         		
         		
         		battleTextArea.appendText("You Lose!\n");
         		
-        		
+        		//If the user wins
         		
         	} else if (tempHealth <= 0) {
         		
